@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 
 import { CharacterList } from "../components";
 // import actions
+import * as actionCreators from '../actions/index';
+import { charsReducer } from '../reducers/starWarsReducer';
 
 class CharacterListView extends React.Component {
   constructor() {
@@ -11,6 +13,7 @@ class CharacterListView extends React.Component {
 
   componentDidMount() {
     // call our action
+    this.props.fetchedCharacters()
   }
 
   render() {
@@ -27,9 +30,14 @@ class CharacterListView extends React.Component {
 
 // our mapStateToProps needs to have two properties inherited from state
 // the characters and the fetching boolean
+function mapStateToProps(state) {
+  return {
+    characters: charsReducer,
+  }
+}
 export default connect(
-  null /* mapStateToProps replaces null here */,
+  mapStateToProps,
   {
-    /* action creators go here */
+    actionCreators
   }
 )(CharacterListView);

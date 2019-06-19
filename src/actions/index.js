@@ -3,6 +3,7 @@ import axios from 'axios';
 
 // we'll need to create 3 different action types here.
 // one for fetching, one for success and one for failure
+
 export const FETCHING = "FETCHING";
 export const SUCCESS = "SUCCESS";
 export const FAILURE = "FAILURE";
@@ -11,12 +12,14 @@ export const FAILURE = "FAILURE";
 // the url to fetch characters from is `https://swapi.co/api/people/`
 // remember that now we have controll over our thunk-based action creator
 
-export const fetchedCharacters = () => {
+
+export const fetchedApi = () => dispatch => {
+    dispatch({ type: FETCHING })
     axios.get('https://swapi.co/api/people/')
         .then(res => {
-            return dispached({ type: SUCCESS, payload: res.data });
+            return dispatch({ type: SUCCESS, payload: res.data });
         })
         .catch(error => {
-            console.log(error.message);
+            return dispatch({ type: FAILURE, payload: error });
         })
 }
