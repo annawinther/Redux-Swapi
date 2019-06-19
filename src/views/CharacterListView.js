@@ -4,13 +4,8 @@ import { connect } from "react-redux";
 import { CharacterList } from "../components";
 // import actions
 import * as actionCreators from '../actions/index';
-// import { charsReducer } from '../reducers/starWarsReducer';
 
 class CharacterListView extends React.Component {
-  // constructor() {
-  //   super();
-  // }
-
   componentDidMount() {
     // call our action
     this.props.fetchedApi()
@@ -20,7 +15,7 @@ class CharacterListView extends React.Component {
     if (this.props.fetching) {
       // return something here to indicate that you are fetching data
       return (
-        <div><p>Please wait, fetching your data... </p></div>
+        <div><h3>Please wait, fetching your data... </h3></div>
       )
     }
     if (this.props.error) {
