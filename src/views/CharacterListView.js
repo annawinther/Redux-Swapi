@@ -12,6 +12,7 @@ class CharacterListView extends React.Component {
   // }
 
   componentDidMount() {
+    debugger;
     // call our action
     this.props.fetchedApi()
   }
