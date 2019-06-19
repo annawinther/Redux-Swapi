@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { CharacterList } from "../components";
 // import actions
 import * as actionCreators from '../actions/index';
-import { charsReducer } from '../reducers/starWarsReducer';
+// import { charsReducer } from '../reducers/starWarsReducer';
 
 class CharacterListView extends React.Component {
   constructor() {
@@ -13,12 +13,13 @@ class CharacterListView extends React.Component {
 
   componentDidMount() {
     // call our action
-    this.props.fetchedCharacters()
+    this.props.fetchedApi()
   }
 
   render() {
     if (this.props.fetching) {
       // return something here to indicate that you are fetching data
+      return console.log('fetching!')
     }
     return (
       <div className="CharactersList_wrapper">
@@ -32,12 +33,11 @@ class CharacterListView extends React.Component {
 // the characters and the fetching boolean
 function mapStateToProps(state) {
   return {
-    characters: charsReducer,
+    characters: state.characters,
   }
 }
 export default connect(
   mapStateToProps,
-  {
-    actionCreators
-  }
+
+  actionCreators
 )(CharacterListView);
